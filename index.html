@@ -445,177 +445,6 @@
             margin: 1rem 0;
         }
 
-        /* OPINIONES RESPONSIVE */
-        .opiniones-seccion {
-            background: #fff7f0;
-            border-radius: 30px 30px 20px 20px;
-            padding: 1.5rem 1rem;
-            margin-top: 3rem;
-            box-shadow: inset 0 -2px 10px #efe0d0;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .opiniones-seccion {
-                border-radius: 60px 60px 20px 20px;
-                padding: 2.5rem 2rem;
-            }
-        }
-
-        .opiniones-titulo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            color: #3e2626;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        @media (min-width: 768px) {
-            .opiniones-titulo {
-                font-size: 2rem;
-            }
-        }
-
-        .lista-opiniones {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-height: 350px;
-            overflow-y: auto;
-            background: #fffcf9;
-            border-radius: 20px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            scrollbar-width: thin;
-            scrollbar-color: #b47b48 #f7e3d6;
-        }
-
-        .lista-opiniones::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .lista-opiniones::-webkit-scrollbar-track {
-            background: #f7e3d6;
-            border-radius: 10px;
-        }
-
-        .lista-opiniones::-webkit-scrollbar-thumb {
-            background: #b47b48;
-            border-radius: 10px;
-        }
-
-        .opinion-item {
-            background: #ffffffd9;
-            border-radius: 20px;
-            padding: 0.8rem 1.2rem;
-            box-shadow: 0 2px 8px #edd9cb;
-            border-left: 8px solid #e07c4c;
-            word-break: break-word;
-        }
-
-        @media (min-width: 640px) {
-            .opinion-item {
-                border-radius: 40px;
-                padding: 1rem 1.8rem;
-            }
-        }
-
-        .opinion-nombre {
-            font-weight: 700;
-            color: #2d150b;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .opinion-texto {
-            color: #43332b;
-            margin: 0.3rem 0 0.2rem 0;
-            font-size: 0.95rem;
-        }
-
-        .opinion-fecha {
-            font-size: 0.7rem;
-            color: #987b69;
-        }
-
-        /* FORMULARIO OPINION */
-        .form-opinion {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background: #ffe7da;
-            padding: 1.5rem;
-            border-radius: 30px;
-            width: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .form-opinion {
-                padding: 2rem;
-                border-radius: 50px;
-            }
-        }
-
-        .form-row {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        @media (min-width: 500px) {
-            .form-row {
-                flex-direction: row;
-            }
-        }
-
-        .form-row input,
-        .form-row textarea {
-            padding: 0.9rem 1.2rem;
-            border: none;
-            border-radius: 40px;
-            font-size: 1rem;
-            background: white;
-            border: 1px solid #e1b9a3;
-            width: 100%;
-        }
-
-        .form-row textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .btn-opinar {
-            background: #8f3d2a;
-            color: white;
-            font-weight: 700;
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        @media (min-width: 480px) {
-            .btn-opinar {
-                width: auto;
-            }
-        }
-
-        .btn-opinar:hover {
-            background: #692c1d;
-        }
-
         /* FOOTER */
         footer {
             background: #251010;
@@ -715,9 +544,6 @@
             <p>🔥 elegí tu punto de cocción · congelado / cocido 🔥</p>
         </div>
 
-
-
-
         <!-- CATEGORÍA: MEDIALUNAS Y FACTURAS -->
         <div class="categoria-titulo"><i class="fas fa-croissant"></i> Medialunas</div>
         <div class="productos-grid" id="grid-medialunas"></div>
@@ -737,29 +563,8 @@
         <!-- CATEGORÍA: DULCES Y POSTRES -->
         <div class="categoria-titulo"><i class="fas fa-candy-cane"></i> Dulces y Postres</div>
         <div class="productos-grid" id="grid-dulces"></div>
-
+        
         <hr>
-
-        <!-- OPINIONES -->
-        <section class="opiniones-seccion" id="opiniones">
-            <div class="opiniones-titulo">
-                <i class="fas fa-star" style="color: #c5622b; font-size: 2rem;"></i>
-                <h2>Lo que dicen nuestros clientes</h2>
-            </div>
-
-            <div class="lista-opiniones" id="lista-opiniones"></div>
-
-            <form class="form-opinion" id="form-opinion">
-                <div class="form-row">
-                    <input type="text" id="opinion-nombre" placeholder="Tu nombre *" required>
-                    <input type="text" id="opinion-producto" placeholder="Producto que probaste (opcional)">
-                </div>
-                <div class="form-row">
-                    <textarea id="opinion-mensaje" rows="2" placeholder="Escribí tu opinión..." required></textarea>
-                </div>
-                <button type="submit" class="btn-opinar"><i class="far fa-comment-dots"></i> Publicar opinión</button>
-            </form>
-        </section>
     </main>
 
     <footer>
@@ -780,12 +585,6 @@
 
     <!-- pie de pagina del desarrollador -->
     <div class="bottom-message">
-        <!-- <p>Diseño Web y Mantenimiento por <a href="https://serviciosinformaticosintegrales.netlify.app" target="_blank"
-                class="developer-credit"><img src="Media/SII_favicon_io/favicon-32x32.png"
-                    alt="Logo Servicios Informáticos Integrales" title="Servicios Informáticos Integrales"></a> |
-            <a href="https://wa.me/5493624096688?text=Hola%20quiero%20más%20información" target="_blank"
-                class="developer-credit">Contacto al <i class="fa-brands fa-whatsapp"></i></a>
-        </p> -->
         <p>Diseño Web y Mantenimiento por <a href="https://serviciosinformaticosintegrales.netlify.app" target="_blank"
                 class="developer-credit">SERVICIOS INFORMATICOS INTEGRALES</a> |
             <a href="https://wa.me/5493624096688?text=Hola%20quiero%20más%20información" target="_blank"
@@ -932,7 +731,7 @@
                     desc: '8 porciones · tomate, muzzarella, albahaca',
                     icono: 'fa-pie-chart',
                     precioCrudo: 12000,
-                    precioCocinado: 00,
+                    precioCocinado: 0,
                     variedades: 'Caprese',
                     imagen: 'tarta_caprese.png',
                     imagenAlt: 'Tarta caprese'
@@ -990,35 +789,35 @@
 
                     // Contenedor de imagen con manejo de error
                     let imagenHTML = `
-                    <div class="product-image-container">
-                        <img src="${imagenUrl}" 
-                             alt="${prod.imagenAlt}" 
-                             class="product-image"
-                             onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'no-image-placeholder\'><i class=\'fas fa-image\'></i><span>Imagen no disponible</span></div><div class=\'image-caption\'><i class=\'fas fa-camera\'></i> Imagen ilustrativa</div>';">
-                        <div class="image-caption"><i class="fas fa-camera"></i> Imagen ilustrativa</div>
-                    </div>
-                `;
+                        <div class="product-image-container">
+                            <img src="${imagenUrl}" 
+                                alt="${prod.imagenAlt}" 
+                                class="product-image"
+                                onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'no-image-placeholder\'><i class=\'fas fa-image\'></i><span>Imagen no disponible</span></div><div class=\'image-caption\'><i class=\'fas fa-camera\'></i> Imagen ilustrativa</div>';">
+                            <div class="image-caption"><i class="fas fa-camera"></i> Imagen ilustrativa</div>
+                        </div>
+                    `;
 
                     card.innerHTML = `
-                    ${imagenHTML}
-                    <h3>${prod.nombre}</h3>
-                    ${variedadesHTML}
-                    <div class="descripcion">${prod.desc}</div>
-                    <div class="precios-flex">
-                        <div class="precio-crudo">
-                            <small>congelado</small>
-                            <span>$${prod.precioCrudo}</span>
+                        ${imagenHTML}
+                        <h3>${prod.nombre}</h3>
+                        ${variedadesHTML}
+                        <div class="descripcion">${prod.desc}</div>
+                        <div class="precios-flex">
+                            <div class="precio-crudo">
+                                <small>congelado</small>
+                                <span>$${prod.precioCrudo}</span>
+                            </div>
+                            <div class="precio-cocinado">
+                                <small>cocinado</small>
+                                <span>$${prod.precioCocinado}</span>
+                            </div>
                         </div>
-                        <div class="precio-cocinado">
-                            <small>cocinado</small>
-                            <span>$${prod.precioCocinado}</span>
+                        <div class="product-footer">
+                            <span class="badge-retiro"><i class="fas fa-store-alt"></i> retiro</span>
+                            <span class="badge-envio"><i class="fas fa-shipping-fast"></i> envío</span>
                         </div>
-                    </div>
-                    <div class="product-footer">
-                        <span class="badge-retiro"><i class="fas fa-store-alt"></i> retiro</span>
-                        <span class="badge-envio"><i class="fas fa-shipping-fast"></i> envío</span>
-                    </div>
-                `;
+                    `;
 
                     // Asignar a la categoría correspondiente
                     if (prod.categoria === 'medialunas' && grids.medialunas) grids.medialunas.appendChild(card);
@@ -1029,134 +828,9 @@
                 });
             }
 
-        
-            // ========== SISTEMA DE OPINIONES CON SERVIDOR v2==========
-            const opinionesEndpoint = 'opiniones.php'; // Ruta al archivo PHP
-
-            // Cargar opiniones desde el servidor
-            async function cargarOpiniones() {
-                try {
-                    const response = await fetch(opinionesEndpoint);
-                    if (!response.ok) throw new Error('Error al cargar opiniones');
-                    const opiniones = await response.json();
-                    mostrarOpiniones(opiniones);
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Fallback: mostrar mensaje de error
-                    document.getElementById('lista-opiniones').innerHTML =
-                        '<div class="opinion-item">No se pudieron cargar las opiniones. Intente más tarde.</div>';
-                }
-            }
-
-            function mostrarOpiniones(opiniones) {
-                const contenedor = document.getElementById('lista-opiniones');
-                if (!contenedor) return;
-
-                contenedor.innerHTML = '';
-
-                if (opiniones.length === 0) {
-                    contenedor.innerHTML = '<div class="opinion-item">Aún no hay opiniones. ¡Sé el primero!</div>';
-                    return;
-                }
-
-                // Mostrar las últimas 8 (más recientes primero)
-                const opinionesMostrar = [...opiniones].reverse().slice(0, 8);
-                opinionesMostrar.forEach(op => {
-                    const div = document.createElement('div');
-                    div.className = 'opinion-item';
-                    div.innerHTML = `
-            <div class="opinion-nombre">
-                <i class="fas fa-user-circle"></i> ${op.nombre}
-                ${op.producto ? `<span style="background:#ffe0c0; padding:2px 10px; border-radius:30px; font-size:0.8rem;">${op.producto}</span>` : ''}
-            </div>
-            <div class="opinion-texto">“${op.texto}”</div>
-            <div class="opinion-fecha">${op.fecha || ''}</div>
-        `;
-                    contenedor.appendChild(div);
-                });
-            }
-
-            // Enviar nueva opinión al servidor
-            async function enviarOpinion(event) {
-                event.preventDefault();
-
-                const nombre = document.getElementById('opinion-nombre').value.trim();
-                const producto = document.getElementById('opinion-producto').value.trim();
-                const texto = document.getElementById('opinion-mensaje').value.trim();
-
-                if (!nombre || !texto) {
-                    alert('Por favor completá nombre y opinión');
-                    return;
-                }
-
-                try {
-                    const response = await fetch(opinionesEndpoint, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ nombre, producto, texto })
-                    });
-
-                    if (!response.ok) throw new Error('Error al guardar');
-
-                    // Limpiar formulario
-                    document.getElementById('opinion-nombre').value = '';
-                    document.getElementById('opinion-producto').value = '';
-                    document.getElementById('opinion-mensaje').value = '';
-
-                    // Recargar opiniones para mostrar la nueva
-                    await cargarOpiniones();
-
-                    // Scroll suave a la sección
-                    document.getElementById('opiniones').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('No se pudo guardar tu opinión. Intentalo de nuevo.');
-                }
-            }
-
-            // Asignar evento al formulario
-            document.getElementById('form-opinion').addEventListener('submit', enviarOpinion);
-
-            // Cargar opiniones al iniciar
-            cargarOpiniones();
             // ========== INICIALIZACIÓN ==========
             document.addEventListener('DOMContentLoaded', function () {
                 renderizarProductos();
-                cargarOpiniones();
-
-                // Formulario de opinión
-                const formOpinion = document.getElementById('form-opinion');
-                if (formOpinion) {
-                    formOpinion.addEventListener('submit', function (e) {
-                        e.preventDefault();
-                        const nombre = document.getElementById('opinion-nombre').value.trim();
-                        const producto = document.getElementById('opinion-producto').value.trim();
-                        const mensaje = document.getElementById('opinion-mensaje').value.trim();
-
-                        if (!nombre || !mensaje) {
-                            alert('Por favor completá nombre y opinión');
-                            return;
-                        }
-
-                        const nuevaOpinion = {
-                            nombre: nombre,
-                            producto: producto || '(producto general)',
-                            texto: mensaje,
-                            fecha: new Date().toLocaleDateString()
-                        };
-
-                        opiniones.push(nuevaOpinion);
-                        localStorage.setItem(opinionesKey, JSON.stringify(opiniones));
-                        mostrarOpiniones();
-
-                        document.getElementById('opinion-nombre').value = '';
-                        document.getElementById('opinion-producto').value = '';
-                        document.getElementById('opinion-mensaje').value = '';
-
-                        document.getElementById('opiniones').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    });
-                }
             });
         })();
     </script>
