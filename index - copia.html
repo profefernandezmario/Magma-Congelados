@@ -1029,26 +1029,28 @@
                 });
             }
 
-        
-            // ========== SISTEMA DE OPINIONES CON SERVIDOR v2==========
-            const opinionesEndpoint = 'opiniones.php'; // Ruta al archivo PHP
+            // ========== SISTEMA DE OPINIONES ==========
+            const opinionesKey = 'magma_opiniones';
+            let opiniones = [];
 
-            // Cargar opiniones desde el servidor
-            async function cargarOpiniones() {
-                try {
-                    const response = await fetch(opinionesEndpoint);
-                    if (!response.ok) throw new Error('Error al cargar opiniones');
-                    const opiniones = await response.json();
-                    mostrarOpiniones(opiniones);
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Fallback: mostrar mensaje de error
-                    document.getElementById('lista-opiniones').innerHTML =
-                        '<div class="opinion-item">No se pudieron cargar las opiniones. Intente más tarde.</div>';
+            const opinionesEjemplo = [
+                { nombre: 'Lucía M.', producto: 'Chipacitos', texto: 'Los chipacitos congelados son prácticos, quedan como recién hechos.', fecha: new Date('2025-02-10').toLocaleDateString() },
+                { nombre: 'Roberto S.', producto: 'Empanadas de Carne', texto: 'Las empanadas de carne son riquísimas, horneadas quedan perfectas.', fecha: new Date('2025-02-18').toLocaleDateString() },
+                { nombre: 'Camila F.', producto: 'Mini Churros', texto: 'Los churritos con salsa son un vicio. Compré congelados y los freí en casa.', fecha: new Date('2025-02-22').toLocaleDateString() }
+            ];
+
+            function cargarOpiniones() {
+                const guardadas = localStorage.getItem(opinionesKey);
+                if (guardadas) {
+                    try { opiniones = JSON.parse(guardadas); } catch (e) { opiniones = [...opinionesEjemplo]; }
+                } else {
+                    opiniones = [...opinionesEjemplo];
+                    localStorage.setItem(opinionesKey, JSON.stringify(opiniones));
                 }
+                mostrarOpiniones();
             }
 
-            function mostrarOpiniones(opiniones) {
+            function mostrarOpiniones() {
                 const contenedor = document.getElementById('lista-opiniones');
                 if (!contenedor) return;
 
@@ -1059,67 +1061,22 @@
                     return;
                 }
 
-                // Mostrar las últimas 8 (más recientes primero)
                 const opinionesMostrar = [...opiniones].reverse().slice(0, 8);
                 opinionesMostrar.forEach(op => {
                     const div = document.createElement('div');
                     div.className = 'opinion-item';
                     div.innerHTML = `
-            <div class="opinion-nombre">
-                <i class="fas fa-user-circle"></i> ${op.nombre}
-                ${op.producto ? `<span style="background:#ffe0c0; padding:2px 10px; border-radius:30px; font-size:0.8rem;">${op.producto}</span>` : ''}
-            </div>
-            <div class="opinion-texto">“${op.texto}”</div>
-            <div class="opinion-fecha">${op.fecha || ''}</div>
-        `;
+                    <div class="opinion-nombre">
+                        <i class="fas fa-user-circle"></i> ${op.nombre}
+                        ${op.producto ? `<span style="background:#ffe0c0; padding:2px 10px; border-radius:30px; font-size:0.8rem;">${op.producto}</span>` : ''}
+                    </div>
+                    <div class="opinion-texto">“${op.texto}”</div>
+                    <div class="opinion-fecha">${op.fecha || 'reciente'}</div>
+                `;
                     contenedor.appendChild(div);
                 });
             }
 
-            // Enviar nueva opinión al servidor
-            async function enviarOpinion(event) {
-                event.preventDefault();
-
-                const nombre = document.getElementById('opinion-nombre').value.trim();
-                const producto = document.getElementById('opinion-producto').value.trim();
-                const texto = document.getElementById('opinion-mensaje').value.trim();
-
-                if (!nombre || !texto) {
-                    alert('Por favor completá nombre y opinión');
-                    return;
-                }
-
-                try {
-                    const response = await fetch(opinionesEndpoint, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ nombre, producto, texto })
-                    });
-
-                    if (!response.ok) throw new Error('Error al guardar');
-
-                    // Limpiar formulario
-                    document.getElementById('opinion-nombre').value = '';
-                    document.getElementById('opinion-producto').value = '';
-                    document.getElementById('opinion-mensaje').value = '';
-
-                    // Recargar opiniones para mostrar la nueva
-                    await cargarOpiniones();
-
-                    // Scroll suave a la sección
-                    document.getElementById('opiniones').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('No se pudo guardar tu opinión. Intentalo de nuevo.');
-                }
-            }
-
-            // Asignar evento al formulario
-            document.getElementById('form-opinion').addEventListener('submit', enviarOpinion);
-
-            // Cargar opiniones al iniciar
-            cargarOpiniones();
             // ========== INICIALIZACIÓN ==========
             document.addEventListener('DOMContentLoaded', function () {
                 renderizarProductos();
